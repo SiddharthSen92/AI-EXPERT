@@ -1,0 +1,23 @@
+SENTIMENT SPY - FINAL MISSION REPORT
+=============================================
+Agent Name: sid
+Total Messages Analyzed: 2
+
+Positive Messages: 1
+Negative Messages: 1
+Neutral Messages: 0
+
+CONVERSATION DETAILS
+---------------------------------------------
+1. Message: i love coding
+   Polarity: 0.50
+   Sentiment: Positive
+   Strength: Moderate
+
+2. Message: i hate coding
+   Polarity: -0.80
+   Sentiment: Negative
+   Strength: Strong
+
+=============================================
+Mission Completed Successfully!
