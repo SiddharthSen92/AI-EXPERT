@@ -13,18 +13,18 @@ def recommend(genre=None, mood=None, rating=None, n=5):
     if genre:
         filtered_df = filtered_df[filtered_df['Genre'].str.contains(genre, case=False, na=False)]
     if rating is not None:
-        filtered_df = filtered_df[filtered_df['IMDB_Rating'] >= rating]
+        filtered_df = filtered_df[filtered_df['Rating'] >= rating]
     if filtered_df.empty:
         print(Fore.YELLOW + "No movies found matching the criteria." + Fore.RESET)
         return pd.DataFrame(columns=['Title', 'Genre', 'Mood', 'Rating'])
     filtered_df, need_nonneg, out = filtered_df.sample(frac=1).reset_index(drop=True),bool(mood),[]
     for _, row in filtered_df.iterrows():
-        ov = row.get('Overview', '')
+        ov = row.get('Description', '')
         if pd.isna(ov):
             continue
         pol = TextBlob(ov).sentiment.polarity
         if (not need_nonneg) or pol >= 0:
-            out.append((row['Series_Title'], pol))
+            out.append((row['Title'], pol))
             if len(out) == n:
                 break
     return out if out else "No movies found matching the criteria."
